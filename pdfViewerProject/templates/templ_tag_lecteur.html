@@ -1,0 +1,31 @@
+{% load static from staticfiles %}
+
+
+<div class="col-md-12 book">
+    <div id="nbMaxPages"></div>
+    {% csrf_token %}
+    <div class="magazine-viewport">
+        <div class="container">
+            <div id="livre_{{ pdfid }}" class="magazine">
+                <div id="emptyBook">
+                    <h3>EMPTY PDF</h3>
+                    <span id="errmsg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'pdfviewerapp/js/modernizr.min.js' %}"></script>
+<script src="{% static 'pdfviewerapp/js/jquery.min.1.7.js' %}"></script>
+<script src="{% static 'pdfviewerapp/lib/turn.js' %}"></script>
+<script src="{% static 'pdfviewerapp/js/magazine.js' %}"></script>
+<script src="{% static 'pdfviewerapp/js/services.js' %}"></script>
+
+<script>
+    $('head').append('<link rel="stylesheet" href="{% static 'pdfviewerapp/css/magazine.css' %}">');
+    $( document ).ready(function() {
+        var viewer = svc('{{ csrf_token }}', 'livre_{{ pdfid }}', '{{ pdfid }}', '{{ res }}', '{{ width }}', '{{ height }}');
+        viewer.loadApp();
+    });
+</script>
