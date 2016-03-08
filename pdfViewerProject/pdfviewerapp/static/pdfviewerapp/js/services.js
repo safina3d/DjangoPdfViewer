@@ -57,9 +57,10 @@ var svc = function (token, id, idPDF, resolution, width, height) {
 
     var loadApp = function () {
         var h = height || 900;
-        var w = width || Math.floor(h * 0.707 * 2);
-        console.log('---->', w, 'x', h);
+        var w = width || Math.floor(h * 0.707);
+        w *= 2;
 
+        console.log('---->', w, 'x', h);
         livre.turn({
             height: h,
             width: w,

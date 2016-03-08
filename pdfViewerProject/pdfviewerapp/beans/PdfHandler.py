@@ -1,4 +1,5 @@
 import base64
+import os
 import ghostscript as gs
 from pdfviewerapp.models import FichierPdf
 
@@ -54,31 +55,31 @@ class PdfHandler(object):
             except IOError:
                 try:
                     args = [
-                        '-dNumRenderingThreads=4'
-                        '-q',
-                        '-dNOGC',
-                        '-dNOPAUSE',
-                        '-dBATCH',
-                        '-dSAFER',
-                        '-dNOTRANSPARENCY',
-                        '-sDEVICE=pngalpha',
-                        '-r{}'.format(quality),
-                        '-dFirstPage={}'.format(index),
-                        '-dLastPage={}'.format(index),
-                        '-dGraphicsAlphaBits=4',
-                        '-dTextAlphaBits=4',
-                        '-sOutputFile={}'.format(img_file_name),
-                        '%s' % pdf_path,  # Source
+                        'ghostscript'
+                        ' -dNumRenderingThreads=4'
+                        ' -q',
+                        ' -dNOGC',
+                        ' -dNOPAUSE',
+                        ' -dBATCH',
+                        ' -dSAFER',
+                        ' -dNOTRANSPARENCY',
+                        ' -sDEVICE=pngalpha',
+                        ' -r{}'.format(quality),
+                        ' -dFirstPage={}'.format(index),
+                        ' -dLastPage={}'.format(index),
+                        ' -dGraphicsAlphaBits=4',
+                        ' -dTextAlphaBits=4',
+                        ' -sOutputFile={}'.format(img_file_name),
+                        ' %s' % pdf_path,  # Source
                     ]
-                    gs_obj = gs.Ghostscript(*args)
+                    cmd = ' '.join(args)
+                    os.system(cmd)
+                    #gs_obj = gs.Ghostscript(*args)
                     self.images.append(self.image_to_base64(img_file_name))
                     # gs_obj = gs.Ghostscript(*args, stdin=sys.stdin, stdout=stdout, stderr=sys.stderr)
                 except gs.GhostscriptError as e:
                     self.error = 'GhostscriptError {}'.format(e)
-                finally:
-                    gs_obj.exit()
-        if gs_obj:
-            pass
+
 
     @staticmethod
     def valid_pages(start, end, nbpages):

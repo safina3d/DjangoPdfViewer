@@ -3,12 +3,15 @@ body {
 
 }
 
+.book {
+	overflow: hidden;
+}
 
 .magazine {
 	margin: 10px auto;
 	background: rgba(92, 92, 92, 0.2);
 	border-radius: 10px;
-    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+    cursor: pointer;
 }
 
 .magazine-viewport {
@@ -122,7 +125,7 @@ body {
     position: absolute;
     top: 20px;
     left: 75%;
-    z-index: 9999999999;
+    z-index: 999999;
     opacity: 1.5;
     border-radius: 5px;
 }
