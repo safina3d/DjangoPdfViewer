@@ -1,16 +1,29 @@
 {% load TagLecteurPdf %}
 {% load static from staticfiles %}
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'pdfviewerapp/css/bootstrap.min.css' %}">
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
+    <title>Test Page</title>
 
-    <h3>PDF VIEWER TAG TEST</h3>
-    {% lecteur_pdf pdfid=6 %}
+</head>
+<div class="container">
+    <div class="col-md-12">
+        <h1>PDF FILES LIST</h1>
+    <ul>
+        {% for book in books %}
+            <li>{{ book }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+
+    <div class="col-md-12">
+        <h1>PDF VIEWER</h1>
+        {% lecteur_pdf pdfid=6 h=450 %}
+    </div>
+</div>
 
 </body>
 </html>

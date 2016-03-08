@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from pdfviewerapp.beans import PdfHandler
-
+from models import FichierPdf
 
 def get_pdf_images_service(request):
     """Post Request Processing"""
@@ -30,4 +30,4 @@ def get_pdf_images_service(request):
 
 def index(request):
     """Home page"""
-    return render(request, "index.html")
+    return render(request, "index.html", {'books': FichierPdf.objects.all()})

@@ -49,14 +49,16 @@ var svc = function (token, id, idPDF, resolution, width, height) {
                     livre.turn('removePage', 1);
                 }
             }
+
             livre.turn('addPage', $(el));
+
         });
     };
 
     var loadApp = function () {
-        var h = height || 900;
-        var w = width || Math.floor(h * 0.707);
-        w *= 2;
+        var h = height || '100%';
+        var w = width || '100%';
+
 
         livre.turn({
             height: h,

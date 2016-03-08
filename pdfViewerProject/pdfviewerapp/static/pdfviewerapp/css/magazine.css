@@ -1,11 +1,8 @@
 body {
-	background: #d5d5d5;
+	background: gainsboro;
+
 }
 
-.book {
-	margin: 0 auto;
-	overflow: hidden;
-}
 
 .magazine {
 	margin: 10px auto;
@@ -121,7 +118,7 @@ body {
 .loader{
 	background-image: url(../pics/loader.gif);
 	background-repeat: no-repeat;
-	background-position: 75% center;
+	background-position: 77% center;
 	/*
     background:no-repeat url(../pics/loader.gif);
     width: 68px;

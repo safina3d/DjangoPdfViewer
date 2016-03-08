@@ -11,7 +11,7 @@ class FichierPdf(models.Model):
     nb_pages = models.IntegerField(default=0)
 
     def __str__(self):
-        return "File: {} >>>> NbPages: {}".format(self.pdf_file, self.nb_pages)
+        return "Id: {}, File: {} , NbPages: {}".format(self.id, self.pdf_file, self.nb_pages)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.nb_pages = FichierPdf.get_nb_page(self.pdf_file)

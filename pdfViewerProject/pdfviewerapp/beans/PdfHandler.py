@@ -43,7 +43,7 @@ class PdfHandler(object):
             return
         self.nb_pages = nb_pages
 
-        for index in xrange(start, end + 1):
+        for index in range(start, end + 1):
             img_file_name = "media/pdf_imgs/pdf_{}_{}_{}.png".format(self.id_pdf, quality, index)
 
             try:
