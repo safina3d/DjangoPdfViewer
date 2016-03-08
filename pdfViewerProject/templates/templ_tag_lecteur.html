@@ -5,12 +5,10 @@
     <div id="nbMaxPages"></div>
     {% csrf_token %}
     <div class="magazine-viewport">
-        <div class="container">
-            <div id="livre_{{ pdfid }}" class="magazine">
-                <div id="emptyBook">
-                    <h3>EMPTY PDF</h3>
-                    <span id="errmsg"></span>
-                </div>
+        <div id="livre_{{ pdfid }}" class="magazine">
+            <div id="emptyBook">
+                <h3>EMPTY PDF</h3>
+                <span id="errmsg"></span>
             </div>
         </div>
     </div>

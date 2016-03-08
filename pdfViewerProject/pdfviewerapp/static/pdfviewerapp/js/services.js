@@ -22,9 +22,9 @@ var svc = function (token, id, idPDF, resolution, width, height) {
             to_page : pageFin || pageDebut,
             quality : resolution || 110
         };
-        $('#nbMaxPages').addClass("loader");
+        livre.addClass("loader");
         callService('svc_images', obj).then(function(resp){
-            $('#nbMaxPages').removeClass("loader");
+           livre.removeClass("loader");
             $("#nbMaxPages").attr("nbMaxPages", resp.nb_pages);
             ajouterPagesPDF(resp.images, resp.error);
         });
@@ -49,9 +49,7 @@ var svc = function (token, id, idPDF, resolution, width, height) {
                     livre.turn('removePage', 1);
                 }
             }
-
             livre.turn('addPage', $(el));
-
         });
     };
 
@@ -60,7 +58,6 @@ var svc = function (token, id, idPDF, resolution, width, height) {
         var w = width || Math.floor(h * 0.707);
         w *= 2;
 
-        console.log('---->', w, 'x', h);
         livre.turn({
             height: h,
             width: w,

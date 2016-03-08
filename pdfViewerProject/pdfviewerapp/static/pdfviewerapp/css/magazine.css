@@ -1,9 +1,9 @@
 body {
-	background: gainsboro;
-
+	background: #d5d5d5;
 }
 
 .book {
+	margin: 0 auto;
 	overflow: hidden;
 }
 
@@ -119,6 +119,10 @@ body {
 }
 
 .loader{
+	background-image: url(../pics/loader.gif);
+	background-repeat: no-repeat;
+	background-position: 75% center;
+	/*
     background:no-repeat url(../pics/loader.gif);
     width: 68px;
     height: 68px;
@@ -128,6 +132,7 @@ body {
     z-index: 999999;
     opacity: 1.5;
     border-radius: 5px;
+    */
 }
 
 .magazine-viewport .shadow{

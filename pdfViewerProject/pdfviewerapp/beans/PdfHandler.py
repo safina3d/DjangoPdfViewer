@@ -1,6 +1,5 @@
 import base64
 import os
-import ghostscript as gs
 from pdfviewerapp.models import FichierPdf
 
 
@@ -28,8 +27,6 @@ class PdfHandler(object):
         try:
             pdf_file = FichierPdf.objects.get(pk=self.id_pdf)
         except FichierPdf.DoesNotExist:
-            #err_img = finders.find('pdfviewerapp/img/error.png')
-            #self.images.append(self.image_to_base64(err_img))
             self.error = 'Invalid pdf file id'
             return
 
@@ -45,7 +42,7 @@ class PdfHandler(object):
             self.error = 'Invalid page index range'
             return
         self.nb_pages = nb_pages
-        gs_obj = None
+
         for index in xrange(start, end + 1):
             img_file_name = "media/pdf_imgs/pdf_{}_{}_{}.png".format(self.id_pdf, quality, index)
 
@@ -53,33 +50,27 @@ class PdfHandler(object):
                 b64_img = self.image_to_base64(img_file_name)
                 self.images.append(b64_img)
             except IOError:
-                try:
-                    args = [
-                        'ghostscript'
-                        ' -dNumRenderingThreads=4'
-                        ' -q',
-                        ' -dNOGC',
-                        ' -dNOPAUSE',
-                        ' -dBATCH',
-                        ' -dSAFER',
-                        ' -dNOTRANSPARENCY',
-                        ' -sDEVICE=pngalpha',
-                        ' -r{}'.format(quality),
-                        ' -dFirstPage={}'.format(index),
-                        ' -dLastPage={}'.format(index),
-                        ' -dGraphicsAlphaBits=4',
-                        ' -dTextAlphaBits=4',
-                        ' -sOutputFile={}'.format(img_file_name),
-                        ' %s' % pdf_path,  # Source
-                    ]
-                    cmd = ' '.join(args)
-                    os.system(cmd)
-                    #gs_obj = gs.Ghostscript(*args)
-                    self.images.append(self.image_to_base64(img_file_name))
-                    # gs_obj = gs.Ghostscript(*args, stdin=sys.stdin, stdout=stdout, stderr=sys.stderr)
-                except gs.GhostscriptError as e:
-                    self.error = 'GhostscriptError {}'.format(e)
-
+                args = [
+                    'ghostscript'
+                    ' -dNumRenderingThreads=4'
+                    ' -q',
+                    ' -dNOGC',
+                    ' -dNOPAUSE',
+                    ' -dBATCH',
+                    ' -dSAFER',
+                    ' -dNOTRANSPARENCY',
+                    ' -sDEVICE=pngalpha',
+                    ' -r{}'.format(quality),
+                    ' -dFirstPage={}'.format(index),
+                    ' -dLastPage={}'.format(index),
+                    ' -dGraphicsAlphaBits=4',
+                    ' -dTextAlphaBits=4',
+                    ' -sOutputFile={}'.format(img_file_name),
+                    ' %s' % pdf_path,  # Source
+                ]
+                cmd = ' '.join(args)
+                os.system(cmd)
+                self.images.append(self.image_to_base64(img_file_name))
 
     @staticmethod
     def valid_pages(start, end, nbpages):
