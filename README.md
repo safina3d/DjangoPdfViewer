@@ -22,9 +22,11 @@
 		* : Argument obligatoire.
 
 #### Utilisation :
-Ce projet inclut une page de test (index.html) :
-	- Copier le dossier du projet pdfviewerProject dans le dossier de votre choix, exemple celui d'un virtualenv avec django préinstallé.
-	- installer les dépendances.
-	- Lancer le serveur.
-	- Aller la page d'index via le navigateur web.
+
+Ce projet inclut une page de test (index.html) : 
+
+- Copier le dossier du projet pdfviewerProject dans le dossier de votre choix, exemple celui d'un virtualenv avec django préinstallé. 
+- Installer les dépendances. 
+- Lancer le serveur. 
+- Aller la page d'index via le navigateur web.
 
