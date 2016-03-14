@@ -1,12 +1,30 @@
-# DJANGO PDF VIEWER
+## PDF PREVIEW APP
 
+#### Groupe : 
+- Alexandre VASTRA
+- Zakaria ZEMMIRI
+- Bryan VERGAUWEN 
+ 	 
 
+#### Description :
+**Django-turnit :** est un tag personnalisé, permettant d’afficher un lecteur de fichier PDF à base d'images des pages.
 
-## TODO
-- [x] Tag perso.
-- [x] Remplacer Ghostscript par appel systeme.
-- [ ] Test multi-utilisateur.
-- [ ] Revue de code.
-- [ ] Test en prod & documentation.
-- [ ] Vider BDD.
-- [ ] Creation package.
+#### Dépendances :
+	pip install PyPDF2
+	
+#### Description du tag :
+	{% lecteur_pdf idpdf='id' res='' w='' h='' %} 
+		- idpdf : [*] Identifiant du pdf dans la base de données.
+		- res : Résolution des images en ppp. 
+		- w : Largeur du lecteur
+		- h : Hauteur du lecteur
+	
+		* : Argument obligatoire.
+
+#### Utilisation :
+Ce projet inclut une page de test (index.html) :
+	- Copier le dossier du projet pdfviewerProject dans le dossier de votre choix, exemple celui d'un virtualenv avec django préinstallé.
+	- installer les dépendances.
+	- Lancer le serveur.
+	- Aller la page d'index via le navigateur web.
+
