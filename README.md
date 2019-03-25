@@ -1,11 +1,5 @@
 ## PDF PREVIEW APP
 
-#### Groupe : 
-- Alexandre VASTRA
-- Zakaria ZEMMIRI
-- Bryan VERGAUWEN 
- 	 
-
 #### Description :
 **Django-turnit :** est un tag personnalisé, permettant d’afficher un lecteur de fichier PDF à base d'images des pages.
 
